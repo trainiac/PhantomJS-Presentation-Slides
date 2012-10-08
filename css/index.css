@@ -26,3 +26,12 @@ li{
 	width:550px;
 	margin:0 auto;
 }
+
+.reach-image{
+	background-image: url(../assets/outofreach.jpeg);
+	background-position: top center;
+	background-repeat: no-repeat;
+	height: 466px;
+    width: 100%;
+	margin:0 auto;
+}

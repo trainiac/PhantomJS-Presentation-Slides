@@ -36,16 +36,13 @@
 						<h2>Overview</h2>
 						<ul style="margin:50px 0 0 0;">
 							<li>
-							    The Project
+							    The Tool
 							</li>
 							<li>
-								The Tool
+								The Project
 							</li>
 							<li>
 								Examples
-							</li>
-							<li>
-								Thoughts
 							</li>
 						</ul>
 						<aside class="notes">
@@ -64,10 +61,106 @@
 						     -buddies of PhantomJS
 						</aside>
 					</section>
+				</section>
+				<section>
+					<section>
+						<h1>The Tool</h1>
+						<img src="assets/tool.png" width="400" height="400"/>
+						<aside class="notes">
+						</aside>
+					</section>
+					<section>
+						<h2>Headless Webkit?</h2>
+						<img src="assets/confused.jpeg" width="500px"/>
+					</section>
+					<section>
+						<h2>Chrome or Safari</h2>
+						<h5>Webkit with a head</h5>
+						<ul>
+							<li>Makes HTML requests</li>
+							<li>Parses HTML into a DOM structure</li>
+							<li>Creates a visual representation of the DOM <br/>(The Head)</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Who needs a head?</h2>
+						<img style="vertical-align: middle;" src="assets/giant-head.jpeg"/>
+						<ul style="vertical-align: middle;">
+							<li>
+								Unnecessary </br>
+								for many tasks
+							</li>
+							<li>
+								It's slow
+							</li>
+							<li>
+								CPU expensive
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Enter PhantomJS</h2>
+						<h5>Webkit without a head</h5>
+						<ul>
+							<li>Makes HTML requests</li>
+							<li>Parses HTML into a DOM structure</li>
+							<li>You start scripting the DOM</li>
+						</ul>
+					</section>
+					<section>
+						<h2>In One Sentence</h2>
+						<blockquote style="margin:60px auto;">
+	                        It’s a command line utility that runs JS scripts in a headless webkit.
+						</blockquote>
+						<pre><code contenteditable>
+$ phantomjs [phantomjs options] my-script.js [script arguments]
+						</code></pre>
+					</section>
+					<section>
+						<h2>Also...</h2>
+						<blockquote style="margin:60px auto;">
+	                        It provides you with a few helpful modules that can be used in the scripts consumed by phantomjs
+						</blockquote>
+						<pre><code contenteditable>//  my-script.js
+
+//phantomjs gives you these
+var sys = require('system');
+var webPage = require('webpage');
+var fileSystem = require('fs');
+var server = require('webserver');
+phantom;
+
+// you're amazing code goes here
+						</code></pre>
+					</section>
 					<section>
 						<h2>This is not an API review</h2>
 						<img src="assets/bored.jpeg" style="margin:10px 0 30px 0;"/>
 						<p>Docs are <a href="https://github.com/ariya/phantomjs/wiki/API-Reference" target="_blank">here</a>.
+					</section>
+					<section>
+						<h2>Yeah, yeah so what do I do with it?</h2>
+						<img src="assets/angry.jpeg" style="margin:10px 0 30px 0;"/>
+					</section>
+					<section>
+						<h2>Popular Applications</h2>
+						<ul>
+							<li>
+								Running javascript tests
+							</li>
+							<li>
+								Page automation / scraping
+							</li>
+							<li>
+								Screen captures
+							</li>
+							<li>
+								PDF Rendering
+							</li>
+							<li>
+								Network / Performance monitoring
+							</li>
+						</ul>
 					</section>
 				</section>
 				<section>
@@ -139,103 +232,11 @@
 					</section>
 					<section>
 						<h2>Easy Install</h2>
-                        <img style="margin:10px auto 30px auto;" src="assets/dumb.jpeg" width="500px;"/>
+                        <img style="margin:10px auto 30px auto; width:700px;" src="assets/dumb.jpeg"/>
 						<p>Download <a target="_blank" href="http://phantomjs.org/download.html" >here</a></p>
 						<aside class="notes">
 							Install takes less than 5 minutes.  With it's as simple as brew install phantomjs.
 						</aside>
-					</section>
-				</section>
-				<section>
-					<section>
-						<h1>The Tool</h1>
-						<img src="assets/tool.png" width="400" height="400"/>
-						<aside class="notes">
-						</aside>
-					</section>
-					<section>
-						<h2>Headless Webkit?</h2>
-						<img src="assets/confused.jpeg" width="500px"/>
-					</section>
-					<section>
-						<h2>Chrome or Safari</h2>
-						<h5>Webkit with a head</h5>
-						<ul>
-							<li>Enter a Url</li>
-							<li>Requests HTML</li>
-							<li>Parses HTML and builds DOM</li>
-							<li>Creates visual representation of the DOM (The Head)</li>
-						</ul>
-					</section>
-					<section>
-						<h2>Who needs a head?</h2>
-						<img style="vertical-align: middle;" src="assets/giant-head.jpeg"/>
-						<ul style="vertical-align: middle;">
-							<li>
-								It's slow
-							</li>
-							<li>
-								CPU expensive
-							</li>
-							<li>
-								Unnecessary </br>
-								for many tasks
-							</li>
-						</ul>
-					</section>
-					<section>
-						<h2>PhantomJS</h2>
-						<h5>Webkit without a head</h5>
-						<ul>
-							<li>
-								<pre style="width:100%;"><code contenteditable>$ phantomjs my-script.js 'http://google.com'</code></pre>
-							</li>
-							<li>Requests HTML</li>
-							<li>Parses HTML and builds DOM</li>
-						</ul>
-					</section>
-					<section>
-						<h2>In One Sentence</h2>
-						<blockquote style="margin:60px auto;">
-	                        It’s a command line utility that runs JS scripts in a headless webkit.
-						</blockquote>
-						<pre><code contenteditable>
-$ phantomjs [phantomjs options] my-script.js [script arguments]
-						</code></pre>
-					</section>
-					<section>
-						<h2>Also...</h2>
-						<blockquote style="margin:60px auto;">
-	                        It provides you with a few helpful modules that can be used in the scripts consumed by phantomjs
-						</blockquote>
-						<pre><code contenteditable>//  my-script.js
-
-//phantomjs gives you these
-var sys = require('system');
-var webPage = require('webpage');
-var fileSystem = require('fs');
-var server = require('webserver');
-phantom;
-
-// you're amazing code goes here
-						</code></pre>
-					</section>
-					<section>
-						<h2>Yeah, yeah so what do I with it?</h2>
-						<ul>
-							<li>
-								JS testing
-							</li>
-							<li>
-								Page automation
-							</li>
-							<li>
-								Screen capture
-							</li>
-							<li>
-								Network monitoring
-							</li>
-						</ul>
 					</section>
 				</section>
 				<section>
@@ -333,34 +334,116 @@ imgSrcs.forEach(function(src){
 phantom.exit(0);</code></pre>
 					</section>
 					<section>
-						<h2>Put it together...</h2>
-						<pre><code contenteditable>var system = require('system');
-scriptName = system.args[0];
-url = system.args[1];
-var webPage = require('webpage').create();
-webPage.open( url, function(status){
-    var imgSrcs = webPage.evaluate(function () {
-        var imgs = document.querySelectorAll('img');
-        imgs = Array.prototype.slice.call(this, 0);
-        return imgs.map(function(img){
-            return img.src;
-        });
-    });
-    imgSrcs.forEach(function(src){
-        console.log(src);
-    });
-    phantom.exit(0);
-});</code></pre>
-					</section>
-					<section>
 						<h2>Demo Example #1</h2>
 					</section>
 					<section>
-						<h2>Example #2</h2>
+						<h2>Good stuff but I can't get my data</h2>
+						<div class="reach-image"></div>
+					</section>
+					<section>
+						<h2>Example #3</h2>
+						<h4 style="margin:50px 0 50px 0;">Create a web server that returns scraped content in JSON</h4>
+						<pre><code contenteditable>$ phantomjs phantom-scrape-server.js
+$ curl localhost:8080/?url=http%3A//pinterest.com
+
+[{
+    "alt": "",
+    "src": "http://passets-ec.pinterest.com/images/search.gif",
+    "title": ""
+},{
+    "alt": "beautiful dresses beautiful dresses",
+    "src": "http://media.pinterest.com/upload/fi0I_b.jpg",
+    "title": ""
+},
+...</code></pre>
+					</section>
+
+					<section>
+						<h2>Design for phantom-scrape-server.js</h2>
+						<ol style="margin-top:50px;">
+							<li>Start a web server</li>
+							<li>Setup a Request Handler</li>
+							<li>Scrape Image Data</li>
+							<li>Return JSON Response</li>
+						</ol>
+					</section>
+					<section>
+						<h2>Step 1: Start a web server</h2>
+						<pre><code contenteditable>//PhantomJS provides you with a webserver module
+//create an instance
+var server = require('webserver').create();
+
+// we will be requiring the webpage module but will not make
+// an instance until a request comes in
+var WebPage = require('webpage');
+
+//start the server to start listening on port 8080 (localhost:8080)
+service = server.listen(8080, function (request, response) {
+
+   //here is where we will write our code to handle requests
+
+});</code></pre>
+					</section>
+					<section>
+						<h2>Step 2: Setup a Request Handler</h2>
+						<pre><code contenteditable>// Extract the url that we will use to scrape data from
+var queryString = request.url.split("?")[1];
+var url = unescape(queryString.split("=")[1]);
+
+// create new instance of webpage to make a request
+var webPage = WebPage.create();
+webPage.open(url, function(status){
+
+   // here we will write code to scrape the page
+   // and return the reponse
+
+});</code></pre>
+					</section>
+					<section>
+						<h2>Step 3: Scrape Image Sources</h2>
+						<pre><code contenteditable>var imgData = webPage.evaluate(function(){
+    var imgs = document.querySelectorAll("img");
+
+    imgs = Array.prototype.slice.call(imgs,0);
+
+    // Javascript 1.6 function
+    return imgs.map(function(img){
+        return{
+            src: img.src,
+            alt: img.alt,
+            title: img.title
+        };
+    });
+});</code></pre>
+					</section>
+					<section>
+						<h2>Step 4: Return JSON Response</h2>
+						<pre><code contenteditable>//need to release the memory of the webpage
+webPage.release();
+
+//form the response
+response.statusCode = 200;
+response.headers = {
+    'Content-Type': "text/javascript"
+};
+response.write(JSON.stringify(imgData, null, 4));
+response.close();</code></pre>
+					</section>
+					<section>
+						<h2>Webserver Module Still Experimental</h2>
+                        <img src="assets/Experimental.jpeg"/>
+					</section>
+					<section>
+						<h2>Demo Example #2</h2>
+					</section>
+					<section>
+						<h2>Example #3</h2>
 						<h4 style="margin:50px 0 50px 0;">Run Javascript Tests</h4>
 						<pre><code contenteditable>
 $ phantomjs phantom-qunit.js &lt;test-file&gt;
 
+Pass
+Passing
 Passed. You should probably drink a beer
 								</code></pre>
 					</section>
@@ -469,7 +552,140 @@ if(complete){
 }</code></pre>
 					</section>
 					<section>
-						<h2>Demo Example #1</h2>
+						<h2>Demo Example #3</h2>
+					</section>
+					<section>
+						<h2>Example #4</h2>
+						<h4 style="margin:50px 0 50px 0;">Create a PDF of your web page</h4>
+						<pre><code contenteditable>$ phantomjs phantom-pdf.js &lt;arg1&gt; &lt;arg2&gt; ...
+
+Your file was rendered : /path/to/pdf/webpage.pdf</code></pre>
+					</section>
+					<section>
+						<h2>Design for phantom-pdf.js</h2>
+						<ol style="margin-top:50px;">
+							<li>Validate Arguments</li>
+							<li>Parse Arguments</li>
+							<li>Configure webpage instance</li>
+							<li>Render PDF</li>
+						</ol>
+					</section>
+					<section>
+					    <h2>Step 1: Validate Arguments</h2>
+						<pre><code contenteditable>var requiredArgs = [
+    'script', 'url', 'filename', 'zoomFactor', 'headerHeight',
+    'footerHeight' , 'marginTop', 'marginRight','marginBottom',
+    'marginLeft', 'orientation', 'format', 'header', 'footer'
+];
+
+if(system.args.length !== requiredArgs.length){
+    var msgs = requiredArgs.map(function(arg){
+        return "<" + arg + ">";
+    });
+    // the first arg isn't an option so no brackets
+    msgs.shift();
+    msgs.unshift(system.args[0]);
+    console.log("Usage: " + msgs.join());
+    phatom.exit(1);
+}</code></pre>
+					</section>
+					<section>
+						<h2>Step 2: Parse Arguments</h2>
+						<pre><code contenteditable>//put all of our script args into an object
+var settings = {};
+
+requiredArgs.forEach(function(value, i){
+    settings[requiredArgs[i]] = system.args[i];
+});
+
+// settings.url
+// settings.footer,
+// settings.header
+...</code></pre>
+					</section>
+					<section>
+						<h2>Step 3: Configure webpage instance </h2>
+						<h4>(1 of 3)</h4>
+						<pre><code contenteditable>
+webPage.paperSize = {
+    header: {
+        height: settings.headerHeight,
+        contents: phantom.callback(function(pageNum, numPages) {
+            return settings.header
+                       .replace("#pageNum#", pageNum)
+                       .replace("#numPages#", numPages);
+        })
+    },
+...
+}</code></pre>
+					    <aside class="notes">
+							// the webpage.papersize property is where
+                            // you configure how the page should be printed
+                            //Every time a new page is rendered by PhantomJS
+                            //this will get invoked
+						</aside>
+					</section>
+					<section>
+						<h2>Step 3: Configure webpage instance </h2>
+						<h4>(2 of 3)</h4>
+						<pre><code contenteditable>webPage.paperSize = {
+...
+    footer: {
+        height: settings.footerHeight,
+        contents: phantom.callback(function(pg, pgs) {
+            return settings.footer
+                       .replace("#pg#", pg)
+                       .replace("#pgs#", pgs);
+        })
+    },
+...
+}</code></pre>
+					</section>
+					<section>
+						<h2>Step 3: Configure webpage</h2>
+						<h4>(3 of 3)</h4>
+						<pre><code contenteditable>webPage.paperSize = {
+...
+    margin: {
+        top: settings.marginTop,
+        right: settings.marginRight,
+        bottom: settings.marginBottom,
+        left: settings.marginLeft
+    },
+    orientation: settings.orientation,
+    format: settings.format
+};
+
+webPage.zoomFactor = parseFloat(settings.zoomFactor);</code></pre>
+					</section>
+					<section>
+						<h2>Step 4: Render PDF</h2>
+						<pre><code contenteditable>webPage.open( settings.url, function(status){
+
+    // ensure that the filename ends in .pdf because
+    // this is the instruction to render a pdf vs. png or jpeg
+    if(settings.filename.substring(-4).toLowerCase() !== ".pdf"){
+	    settings.filename += ".pdf";
+	}
+
+    //writes the pdf file to disk
+    webPage.render(filename);
+    phantom.exit(0);
+});</code></pre>
+					</section>
+					<section>
+						<h2>Biggest Selling Point</h2>
+						<blockquote style="margin:100px auto 100px auto;">
+							Since PhantomJS is using WebKit, it can render HTML/CSS, SVG and Canvas to PDF the way users see it on your website.
+						</blockquote>
+						<h6>psssst and it's free</h6>
+					</section>
+					<section>
+						<h2>Printed Pages Should Be Oblivious Too</h2>
+						<img src="assets/peepingtom.jpeg"/>
+					</section>
+					<section>
+						<h2>Demo Example #4<h2>
 					</section>
 				</section>
 				<section>
@@ -481,7 +697,7 @@ if(complete){
 					</section>
 					<section>
 						<h2>Is it right for me?</h2>
-						<img src="assets/dudeinheels.jpeg" height="400"/>
+						<img src="assets/dudeinheels.jpeg"/>
 						<aside class="notes">
 						</aside>
 					</section>
