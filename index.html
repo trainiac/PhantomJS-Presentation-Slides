@@ -64,6 +64,11 @@
 						     -buddies of PhantomJS
 						</aside>
 					</section>
+					<section>
+						<h2>This is not an API review</h2>
+						<img src="assets/bored.jpeg" style="margin:10px 0 30px 0;"/>
+						<p>Docs are <a href="https://github.com/ariya/phantomjs/wiki/API-Reference" target="_blank">here</a>.
+					</section>
 				</section>
 				<section>
 					<section>
@@ -241,11 +246,6 @@ phantom;
 						</aside>
 					</section>
 					<section>
-						<h2>This is not an API review</h2>
-						<img src="assets/bored.jpeg" style="margin:10px 0 30px 0;"/>
-						<p>Docs are <a href="https://github.com/ariya/phantomjs/wiki/API-Reference" target="_blank">here</a>.
-					</section>
-					<section>
 						<h2>Example #1</h2>
 						<h4 style="margin:50px 0 50px 0;">Scrape image sources from a URL.</h4>
 						<pre><code contenteditable>
@@ -361,27 +361,22 @@ webPage.open( url, function(status){
 						<pre><code contenteditable>
 $ phantomjs phantom-qunit.js &lt;test-file&gt;
 
-The tests passed. You should probably go drink a beer
+Passed. You should probably drink a beer
 								</code></pre>
 					</section>
 					<section>
-						<h2>Steps</h2>
-						<ol>
-							<li>
-								Write your QUnit tests ( tests.html )
-							</li>
-							<li>
-                                Write a script ( phantom-qunit.js ) that reports on the outcome of those tests
-							</li>
-							<li>
-								Run this:
-							</li>
+						<h2>Design for phantom-qunit.js</h2>
+						<ol style="margin-top:50px;">
+							<li>Validate Arguments</li>
+							<li>Configure WebPage Instance</li>
+							<li>Run QUnit test</li>
+							<li>Determine test status</li>
+							<li>Output Results</li>
 						</ol>
-
 					</section>
 					<section>
 						<h2>Why QUnit?</h2>
-						<h4>The simple answer is: We go back.</h2>
+						<h4>The simple answer is: We go back.</h4>
 						<div class="nostalgia-image"></div>
 					    <aside class="notes">
 					    	There are other javascript testing frameworks that would totally work as well.
@@ -389,7 +384,92 @@ The tests passed. You should probably go drink a beer
 						</aside>
 					</section>
 					<section>
+					    <h2>Step 1: Validate Arguments</h2>
+						<pre><code contenteditable>var system = require('system');
+var script = system.args[0];
 
+// add some validation this time
+if( system.args.length !== 2 ){
+
+    //report how the script should be invoked
+    console.log("Usage: phantomjs " + script + " &lt;test-file&gt;");
+
+    // because this is a failure exit with a non zero status
+    phantom.exit(1);
+}
+
+//get our test file
+var testFile = system.args[1];</code></pre>
+					</section>
+					<section>
+						<h2>Step 2: Configure WebPage Instance</h2>
+						<pre><code contenteditable>//if there is a javascript error in the test page
+//onError function will be invoked and log erros to the console
+webPage.onError = function(msg, trace){
+    console.log("Error on the page: " + msg);
+    trace.forEach(function(item) {
+        console.log('  ', item.file, ':', item.line);
+    });
+};
+
+//relay console.log calls in the test page to the console
+webPage.onConsoleMessage = function(msg){
+    console.log(msg);
+};
+
+//set the size of the view port that test page will be run in
+webPage.viewPortSize = { width: 980, height: 1000 };</code></pre>
+					</section>
+					<section>
+						<h2>Step 3: Run QUnit tests</h2>
+						<pre><code contenteditable>webPage.open( testFile, function(status){
+
+    //this time let's validate the page loaded properly
+    if ( status !== 'success') {
+        console.log("Unable to load " + url);
+        phantom.exit(2);
+    }
+
+    setInterval(function() {
+        //poll for test completion
+    }, 100);
+
+});</code></pre>
+					</section>
+					<section>
+						<h2>Step 4: Determine Test Status</h2>
+						<pre><code contenteditable>//Inside setInterval so it will repeat until complete
+var complete = webPage.evaluate(function () {
+    var banner = document.getElementById('qunit-banner');
+    var classes = banner.className;
+    var failed = classes.indexOf('qunit-fail') !== -1;
+    var passed = classes.indexOf('qunit-pass') !== -1;
+
+    if( !failed &amp;&amp; !passed ) return false;
+    if(failed) return "failed";
+    return "passed";
+});
+</code></pre>
+					</section>
+					<section>
+						<h2>Tests Are Oblivious To PhantomJS</h2>
+						<img src="assets/peepingtom.jpeg"/>
+					</section>
+					<section>
+						<h2>Step 5: Output Results</h2>
+						<pre><code contenteditable>//Inside setInterval so it will repeat until complete
+if(complete){
+    if(complete === "failed"){
+        console.log("Failed. You should probably drink a beer");
+        phantom.exit(3);
+    }
+
+    console.log("Passed. You should probably drink a beer");
+    phantom.exit(0);
+}</code></pre>
+					</section>
+					<section>
+						<h2>Demo Example #1</h2>
 					</section>
 				</section>
 				<section>
