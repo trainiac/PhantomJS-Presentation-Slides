@@ -162,6 +162,10 @@ phantom;
 							</li>
 						</ul>
 					</section>
+					<section>
+						<h2>It's whatever you want it to be!</h2>
+						<img src="assets/abstract.jpeg"/>
+					</section>
 				</section>
 				<section>
 					<section>
@@ -263,7 +267,7 @@ http://somesite.com/image5.jpeg
 						<h2>Design for phantom-img-srcs.js</h2>
 						<ol style="margin-top:50px;">
 							<li>Parse Console Arguments</li>
-							<li>Request The URL</li>
+							<li>Request HTML</li>
 							<li>Scrape Image Sources</li>
 							<li>Output to Console</li>
 						</ol>
@@ -341,8 +345,8 @@ phantom.exit(0);</code></pre>
 						<div class="reach-image"></div>
 					</section>
 					<section>
-						<h2>Example #3</h2>
-						<h4 style="margin:50px 0 50px 0;">Create a web server that returns scraped content in JSON</h4>
+						<h2>Example #2</h2>
+						<h4 style="margin:50px 0 50px 0;">Create a web server that can scrape content and return JSON</h4>
 						<pre><code contenteditable>$ phantomjs phantom-scrape-server.js
 $ curl localhost:8080/?url=http%3A//pinterest.com
 
@@ -419,7 +423,8 @@ webPage.open(url, function(status){
 					<section>
 						<h2>Step 4: Return JSON Response</h2>
 						<pre><code contenteditable>//need to release the memory of the webpage
-webPage.release();
+//New as of 1.7 used to be webPage.release();
+webPage.close();
 
 //form the response
 response.statusCode = 200;
@@ -565,13 +570,13 @@ Your file was rendered : /path/to/pdf/webpage.pdf</code></pre>
 						<h2>Design for phantom-pdf.js</h2>
 						<ol style="margin-top:50px;">
 							<li>Validate Arguments</li>
-							<li>Parse Arguments</li>
-							<li>Configure webpage instance</li>
+							<li>Configure PDF Page Settings</li>
 							<li>Render PDF</li>
 						</ol>
 					</section>
 					<section>
 					    <h2>Step 1: Validate Arguments</h2>
+					    <h4>(1 of 2)</h4>
 						<pre><code contenteditable>var requiredArgs = [
     'script', 'url', 'filename', 'zoomFactor', 'headerHeight',
     'footerHeight' , 'marginTop', 'marginRight','marginBottom',
@@ -582,15 +587,16 @@ if(system.args.length !== requiredArgs.length){
     var msgs = requiredArgs.map(function(arg){
         return "<" + arg + ">";
     });
+
     // the first arg isn't an option so no brackets
-    msgs.shift();
-    msgs.unshift(system.args[0]);
+    msgs[0] = system.args[0];
     console.log("Usage: " + msgs.join());
     phatom.exit(1);
 }</code></pre>
 					</section>
 					<section>
-						<h2>Step 2: Parse Arguments</h2>
+						<h2>Step 1: Validate Arguments</h2>
+					    <h4>(2 of 2)</h4>
 						<pre><code contenteditable>//put all of our script args into an object
 var settings = {};
 
@@ -604,7 +610,7 @@ requiredArgs.forEach(function(value, i){
 ...</code></pre>
 					</section>
 					<section>
-						<h2>Step 3: Configure webpage instance </h2>
+						<h2>Step 2: Configure PDF Page Settings </h2>
 						<h4>(1 of 3)</h4>
 						<pre><code contenteditable>
 webPage.paperSize = {
@@ -626,7 +632,7 @@ webPage.paperSize = {
 						</aside>
 					</section>
 					<section>
-						<h2>Step 3: Configure webpage instance </h2>
+						<h2>Step 3: Configure PDF Page Settings </h2>
 						<h4>(2 of 3)</h4>
 						<pre><code contenteditable>webPage.paperSize = {
 ...
@@ -642,7 +648,7 @@ webPage.paperSize = {
 }</code></pre>
 					</section>
 					<section>
-						<h2>Step 3: Configure webpage</h2>
+						<h2>Step 3: Configure PDF Page Settings</h2>
 						<h4>(3 of 3)</h4>
 						<pre><code contenteditable>webPage.paperSize = {
 ...
@@ -659,7 +665,7 @@ webPage.paperSize = {
 webPage.zoomFactor = parseFloat(settings.zoomFactor);</code></pre>
 					</section>
 					<section>
-						<h2>Step 4: Render PDF</h2>
+						<h2>Step 3: Render PDF</h2>
 						<pre><code contenteditable>webPage.open( settings.url, function(status){
 
     // ensure that the filename ends in .pdf because
@@ -689,11 +695,19 @@ webPage.zoomFactor = parseFloat(settings.zoomFactor);</code></pre>
 					</section>
 				</section>
 				<section>
+
 					<section>
-						<h2>Is it right for me?</h2>
-						<img src="assets/dudeinheels.jpeg"/>
-						<aside class="notes">
-						</aside>
+						<h2>Adrian Adkison</h2>
+						<ul>
+							<li>Engineer at SurveyMonkey</li>
+							<li>We are hiring!</li>
+							<li>adrian@surveymonkey.com</li>
+							<li>@metalculus84</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Thank You!</h2>
+						<img src="assets/beer_toast.jpeg" />
 					</section>
 				</section>
 			</div>
