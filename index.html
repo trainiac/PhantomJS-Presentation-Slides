@@ -26,11 +26,6 @@
 						<h3>The Headless Webkit</h3>
 						<h5> </h5>
 						<img src="assets/headless_horseman.jpeg" width="400" height="400"/>
-						<aside class="notes">
-							-Introduce yourself
-							  -name, job, and recently did some work with PhantomJS
-							  -want to share findins while they are still fresh in head
-						</aside>
 					</section>
 					<section>
 						<h2>Overview</h2>
@@ -45,29 +40,12 @@
 								Examples
 							</li>
 						</ul>
-						<aside class="notes">
-							The project
-							 -a little history
-							 -the current state of things
-						    The tool
-						     -what does it do
-						     -what is a headless webkit
-						     -how to install
-						     -api review
-						    Why Should I use PhantomJS
-						     -purposes
-						     -its free
-						     -strenghts and weaknesses
-						     -buddies of PhantomJS
-						</aside>
 					</section>
 				</section>
 				<section>
 					<section>
 						<h1>The Tool</h1>
 						<img src="assets/tool.png" width="400" height="400"/>
-						<aside class="notes">
-						</aside>
 					</section>
 					<section>
 						<h2>Headless Webkit?</h2>
@@ -130,7 +108,7 @@ var fileSystem = require('fs');
 var server = require('webserver');
 phantom;
 
-// you're amazing code goes here
+// your amazing code goes here
 						</code></pre>
 					</section>
 					<section>
@@ -155,10 +133,10 @@ phantom;
 								Screen captures
 							</li>
 							<li>
-								PDF Rendering
+								PDF rendering
 							</li>
 							<li>
-								Network / Performance monitoring
+								Network / performance monitoring
 							</li>
 						</ul>
 					</section>
@@ -171,11 +149,6 @@ phantom;
 					<section>
 						<h1>The Project</h1>
 						<img src="assets/phantomjsghost.png" width="400" height="400"/>
-						<aside class="notes">
-							-Introduce yourself
-							  -name, job, and recently did some work with PhantomJS
-							  -want to share findins while they are still fresh in head
-						</aside>
 					</section>
 					<section>
 						<h2>I'm not just the creator</h2>
@@ -184,10 +157,6 @@ phantom;
 						<a class="ariya-link" href="https://twitter.com/AriyaHidayat">
 							Ariya Hidayat
 						</a>
-						<aside class="notes">
-							Project was founded by Ariya Hidayat in 2010
-							Ariya is Director of Engineering at Sencha and is actually a member of the MountainView Javascript meetup group.
-						</aside>
 					</section>
 					<section>
 						<h2>Project Info</h2>
@@ -210,13 +179,9 @@ phantom;
 							<li>Ember.js</li>
 							<li>Grunt</li>
 							<li>Yeoman</li>
-							<li>SurveyMonkey <br/>(shameless)</li>
+							<li>SurveyMonkey <br/>(The coolest)</li>
 						</ul>
 						<img style="vertical-align: middle;" src="assets/coolkid.jpeg" width="" height=""/>
-						<aside class="notes">
-							Big companies, startups, and js library developers are incorporating the tool into
-							their work flow.
-						</aside>
 					</section>
 					<section>
 						<h2>Current Version</h2>
@@ -226,129 +191,171 @@ phantom;
 							<li>Releases every 2-3 months</li>
 						</ul>
 						<img style="display:block; margin: 0 auto;" src="assets/blazing-star.jpeg"/>
-
-						<aside class="notes">
-							Well the project is now two years old. Had the most recent release was
-							made a few weeks ago.  From observing the patterns there tends to be a release
-							every 2-3 months.  So it has gotten quite a bit of interest and is actively
-							beeing developed
-						</aside>
 					</section>
 					<section>
 						<h2>Easy Install</h2>
                         <img style="margin:10px auto 30px auto; width:700px;" src="assets/dumb.jpeg"/>
 						<p>Download <a target="_blank" href="http://phantomjs.org/download.html" >here</a></p>
-						<aside class="notes">
-							Install takes less than 5 minutes.  With it's as simple as brew install phantomjs.
-						</aside>
 					</section>
 				</section>
 				<section>
 					<section>
 						<h1>Examples</h1>
 						<img src="assets/house.png" width="400" height="400"/>
-						<aside class="notes">
-						</aside>
 					</section>
 					<section>
-						<h2>Example #1</h2>
+						<h2 style="color: #61B329;">Example #1</h2>
 						<h4 style="margin:50px 0 50px 0;">Scrape image sources from a URL.</h4>
-						<pre><code contenteditable>
-$ phantomjs phantom-img-srcs.js &lt;url&gt;
+						<pre><code contenteditable>$ phantomjs phantom-img-srcs.js &lt;url&gt;
 
 http://somesite.com/image1.jpeg
 http://somesite.com/image2.jpeg
 http://somesite.com/image3.jpeg
 http://somesite.com/image4.jpeg
-http://somesite.com/image5.jpeg
-								</code></pre>
+http://somesite.com/image5.jpeg</code></pre>
 					</section>
 					<section>
 						<h2>Design for phantom-img-srcs.js</h2>
 						<ol style="margin-top:50px;">
-							<li>Parse Console Arguments</li>
+							<li>Parse console arguments</li>
 							<li>Request HTML</li>
-							<li>Scrape Image Sources</li>
-							<li>Output to Console</li>
+							<li>Scrape image sources</li>
+							<li>Output to console</li>
 						</ol>
 					</section>
 					<section>
 						<h2>Step 1: Parse Console Arguments</h2>
-						<pre><code contenteditable>
-// PhantomJS provides you with the system module
+						<pre><code contenteditable>// PhantomJS provides you with the system module
 var system = require('system');
 
 // The first argument is the name of the
 // script that is currently being invoked. phantom-img-srcs.js
 scriptName = system.args[0];
 
-// the second argument is the url that we will use to scrape image sources
-url = system.args[1];
-						</code></pre>
+// The second argument is the url that we will
+// use to scrape image sources
+url = system.args[1];</code></pre>
 					</section>
 					<section>
 						<h2>Step 2: Request The URL</h2>
-						<pre><code contenteditable>
-// PhantomJS provides you with the webpage module
-// Need to create an instance
+						<pre><code contenteditable>// PhantomJS provides you with the webpage module
 var webPage = require('webpage').create();
 
-//pass a url and a callback that will be invoked
-//when the a response is received
+// Pass a url and a callback that will be invoked
+// when the a response is received
 webPage.open( url, function(status){
 
-//status will be either 'success' or 'fail'
-//now you can start scraping on the url
+    // Status will be either 'success' or 'fail'
+    // Now you can start scripting on the DOM
 
-});
-						</code></pre>
+});</code></pre>
 					</section>
 					<section>
 						<h2>Step 3: Scrape Image Sources</h2>
-						<pre><code contenteditable>// once we have successfully requested the webPage
-// webPage.evaluate creates a sandboxed scripting environment
-// for us to interact with the requested DOM
+						<pre><code contenteditable>// We can script on the DOM using webPage.evaluate
 var imgSrcs = webPage.evaluate(function () {
-    // Use the new Selectors API because you are runnin webkit
+
     var imgs = document.querySelectorAll('img');
 
     // Convert nodeList to array
-    imgs = Array.prototype.slice.call(this, 0);
+    imgs = Array.prototype.slice.call(imgs, 0);
 
-    // Use Javascript 1.6 because you are runnin webkit
-    // return an array of the pages image sources
+    // Return array of the page's image sources out to imgSrcs
     return imgs.map(function(img){
         return img.src;
     });
 });</code></pre>
 					</section>
 					<section>
-						<h2>Step 4: Output To Console</h2>
-						<pre><code contenteditable>// we have returned a list of image sources
-// from the requested page and are no longer in the sandbox
+						<h2>Scope of webPage.evaluate</h2>
+						<h4>( 1 of 3 )</h4>
+						<pre><code contenteditable>// Creates a sandboxed scripting environment
 
-// Use Javascript 1.6 outside of the sandbox as well
+webPage.evaluate(function(){
+   // Code here runs in the context of the file that was opened
+   // No Access to variables in your PhantomJS script
+});</code></pre>
+					</section>
+					<section>
+						<h2>Scope of webPage.evaluate</h2>
+						<h4>( 2 of 3 )</h4>
+						<pre><code contenteditable>var outside = 2;
+
+function doSomething(){
+    return "something";
+}
+
+webPage.evaluate(function(){
+    //Throws an error
+    doSomething();
+
+    // 'outside' is also not available
+    var inner = outside;
+});</code></pre>
+					</section>
+					<section>
+						<h2>Scope of webPage.evaluate</h2>
+						<h4>( 3 of 3 )</h4>
+						<pre><code contenteditable>// To have access to data inside evaluate, pass it as a
+// second argument
+
+var outer = { stuff: 'stuff'};
+
+var fromInsidePage = webPage.evaluate(function(data){
+
+    data.stuff === 'stuff'
+
+    return 4;
+}, outer);
+
+fromInsidePage === 4;
+
+// Anything that can be JSONified can be passed in or returned
+// No functions, DOM nodes</code></pre>
+					</section>
+					<section>
+						<h2>Step 4: Output To Console</h2>
+						<pre><code contenteditable>// imgSrcs is a list of image sources from the requested page
 imgSrcs.forEach(function(src){
 
-    // this is how we output to the console
+    // This is how we output to the console
     console.log(src);
 });
 
-// exit the phantomjs process
-phantom.exit(0);</code></pre>
+// phantom.exit ends our script and the PhantomJS process
+phantom.exit(0);
+
+// A successful program returns 0 and an unsuccessful one
+// returns a non-zero value
+</code></pre>
+					</section>
+					<section>
+						<h2>We Are Always In WebKit</h2><pre style="margin:10px 50px 10px 0; width:50%; display:inline-block; vertical-align:middle;"><code contenteditable>// New Selectors API
+document.querySelectorAll('img');
+
+// Javascript 1.6
+imgs.map(function(img){
+    return img.src;
+});
+
+imgSrcs.forEach(function(src){
+    console.log(src);
+});</code></pre>
+<img style="vertical-align:middle; width:40%;" src="assets/happyplace.jpeg"/>
 					</section>
 					<section>
 						<h2>Demo Example #1</h2>
+						<img src="assets/double-rainbow.jpeg"/>
 					</section>
 					<section>
-						<h2>Good stuff but I can't get my data</h2>
+						<h2>Good stuff, but I can't get my data</h2>
 						<div class="reach-image"></div>
 					</section>
 					<section>
-						<h2>Example #2</h2>
+						<h2 style="color: #61B329;">Example #2</h2>
 						<h4 style="margin:50px 0 50px 0;">Create a web server that can scrape content and return JSON</h4>
 						<pre><code contenteditable>$ phantomjs phantom-scrape-server.js
-$ curl localhost:8080/?url=http%3A//pinterest.com
+$ curl 'localhost:8080/?url=http%3A//pinterest.com'
 
 [{
     "alt": "",
@@ -366,22 +373,21 @@ $ curl localhost:8080/?url=http%3A//pinterest.com
 						<h2>Design for phantom-scrape-server.js</h2>
 						<ol style="margin-top:50px;">
 							<li>Start a web server</li>
-							<li>Setup a Request Handler</li>
-							<li>Scrape Image Data</li>
-							<li>Return JSON Response</li>
+							<li>Parse requests</li>
+							<li>Scrape image data</li>
+							<li>Return JSON response</li>
 						</ol>
 					</section>
 					<section>
-						<h2>Step 1: Start a web server</h2>
+						<h2>Step 1: Start A Web Server</h2>
 						<pre><code contenteditable>//PhantomJS provides you with a webserver module
-//create an instance
 var server = require('webserver').create();
 
-// we will be requiring the webpage module but will not make
+// We will be requiring the webpage module but will not make
 // an instance until a request comes in
 var WebPage = require('webpage');
 
-//start the server to start listening on port 8080 (localhost:8080)
+// Start listening on port 8080 (localhost:8080)
 service = server.listen(8080, function (request, response) {
 
    //here is where we will write our code to handle requests
@@ -389,28 +395,26 @@ service = server.listen(8080, function (request, response) {
 });</code></pre>
 					</section>
 					<section>
-						<h2>Step 2: Setup a Request Handler</h2>
+						<h2>Step 2: Parse Requests</h2>
 						<pre><code contenteditable>// Extract the url that we will use to scrape data from
 var queryString = request.url.split("?")[1];
 var url = unescape(queryString.split("=")[1]);
 
-// create new instance of webpage to make a request
+// Create new instance of webpage to make a request
 var webPage = WebPage.create();
 webPage.open(url, function(status){
 
-   // here we will write code to scrape the page
-   // and return the reponse
+   // Write code to scrape the page and return a reponse
 
 });</code></pre>
 					</section>
 					<section>
-						<h2>Step 3: Scrape Image Sources</h2>
+						<h2>Step 3: Scrape Image Data</h2>
 						<pre><code contenteditable>var imgData = webPage.evaluate(function(){
     var imgs = document.querySelectorAll("img");
 
     imgs = Array.prototype.slice.call(imgs,0);
 
-    // Javascript 1.6 function
     return imgs.map(function(img){
         return{
             src: img.src,
@@ -422,11 +426,11 @@ webPage.open(url, function(status){
 					</section>
 					<section>
 						<h2>Step 4: Return JSON Response</h2>
-						<pre><code contenteditable>//need to release the memory of the webpage
-//New as of 1.7 used to be webPage.release();
+						<pre><code contenteditable>// Need to release the memory heap of the webpage
+// New as of 1.7. Used to be webPage.release();
 webPage.close();
 
-//form the response
+// Form the response
 response.statusCode = 200;
 response.headers = {
     'Content-Type': "text/javascript"
@@ -440,59 +444,48 @@ response.close();</code></pre>
 					</section>
 					<section>
 						<h2>Demo Example #2</h2>
+						<img src="assets/double-rainbow.jpeg"/>
 					</section>
 					<section>
-						<h2>Example #3</h2>
-						<h4 style="margin:50px 0 50px 0;">Run Javascript Tests</h4>
-						<pre><code contenteditable>
-$ phantomjs phantom-qunit.js &lt;test-file&gt;
+						<h2 style="color: #61B329;">Example #3</h2>
+						<h4 style="margin:50px 0 50px 0;">Run javascript tests</h4>
+						<pre><code contenteditable>$ phantomjs phantom-qunit.js &lt;test-file&gt;
 
 Pass
 Passing
-Passed. You should probably drink a beer
-								</code></pre>
+Passed. You should probably drink a beer</code></pre>
 					</section>
 					<section>
 						<h2>Design for phantom-qunit.js</h2>
 						<ol style="margin-top:50px;">
-							<li>Validate Arguments</li>
-							<li>Configure WebPage Instance</li>
+							<li>Validate console arguments</li>
+							<li>Configure webpage Instance</li>
 							<li>Run QUnit test</li>
 							<li>Determine test status</li>
-							<li>Output Results</li>
+							<li>Output results</li>
 						</ol>
 					</section>
 					<section>
 						<h2>Why QUnit?</h2>
-						<h4>The simple answer is: We go back.</h4>
+						<h4>It was my first testing framework</h4>
 						<div class="nostalgia-image"></div>
-					    <aside class="notes">
-					    	There are other javascript testing frameworks that would totally work as well.
-					    	Jasmine is another really popular one.
-						</aside>
 					</section>
 					<section>
-					    <h2>Step 1: Validate Arguments</h2>
+					    <h2>Step 1: Validate Console Arguments</h2>
 						<pre><code contenteditable>var system = require('system');
 var script = system.args[0];
 
-// add some validation this time
 if( system.args.length !== 2 ){
-
-    //report how the script should be invoked
     console.log("Usage: phantomjs " + script + " &lt;test-file&gt;");
-
-    // because this is a failure exit with a non zero status
     phantom.exit(1);
 }
 
-//get our test file
 var testFile = system.args[1];</code></pre>
 					</section>
 					<section>
-						<h2>Step 2: Configure WebPage Instance</h2>
-						<pre><code contenteditable>//if there is a javascript error in the test page
-//onError function will be invoked and log erros to the console
+						<h2>Step 2: Configure Webpage Instance</h2>
+						<pre><code contenteditable>// If there is a javascript error in the test page
+// onError function will be invoked and log erros to the console
 webPage.onError = function(msg, trace){
     console.log("Error on the page: " + msg);
     trace.forEach(function(item) {
@@ -500,26 +493,26 @@ webPage.onError = function(msg, trace){
     });
 };
 
-//relay console.log calls in the test page to the console
+// Relay console.log calls in the test page to the console
 webPage.onConsoleMessage = function(msg){
     console.log(msg);
 };
 
-//set the size of the view port that test page will be run in
+// Set the size of the view port that test page will be run in
 webPage.viewPortSize = { width: 980, height: 1000 };</code></pre>
 					</section>
 					<section>
-						<h2>Step 3: Run QUnit tests</h2>
+						<h2>Step 3: Run QUnit Tests</h2>
 						<pre><code contenteditable>webPage.open( testFile, function(status){
 
-    //this time let's validate the page loaded properly
+    // This time let's validate the page loaded properly
     if ( status !== 'success') {
         console.log("Unable to load " + url);
         phantom.exit(2);
     }
 
     setInterval(function() {
-        //poll for test completion
+        // Poll for test completion
     }, 100);
 
 });</code></pre>
@@ -545,8 +538,7 @@ var complete = webPage.evaluate(function () {
 					</section>
 					<section>
 						<h2>Step 5: Output Results</h2>
-						<pre><code contenteditable>//Inside setInterval so it will repeat until complete
-if(complete){
+						<pre><code contenteditable>if(complete){
     if(complete === "failed"){
         console.log("Failed. You should probably drink a beer");
         phantom.exit(3);
@@ -558,9 +550,10 @@ if(complete){
 					</section>
 					<section>
 						<h2>Demo Example #3</h2>
+						<img src="assets/double-rainbow.jpeg"/>
 					</section>
 					<section>
-						<h2>Example #4</h2>
+						<h2 style="color: #61B329;">Example #4</h2>
 						<h4 style="margin:50px 0 50px 0;">Create a PDF of your web page</h4>
 						<pre><code contenteditable>$ phantomjs phantom-pdf.js &lt;arg1&gt; &lt;arg2&gt; ...
 
@@ -569,13 +562,13 @@ Your file was rendered : /path/to/pdf/webpage.pdf</code></pre>
 					<section>
 						<h2>Design for phantom-pdf.js</h2>
 						<ol style="margin-top:50px;">
-							<li>Validate Arguments</li>
-							<li>Configure PDF Page Settings</li>
+							<li>Validate console arguments</li>
+							<li>Configure PDF page settings</li>
 							<li>Render PDF</li>
 						</ol>
 					</section>
 					<section>
-					    <h2>Step 1: Validate Arguments</h2>
+					    <h2>Step 1: Validate Console Arguments</h2>
 					    <h4>(1 of 2)</h4>
 						<pre><code contenteditable>var requiredArgs = [
     'script', 'url', 'filename', 'zoomFactor', 'headerHeight',
@@ -595,7 +588,7 @@ if(system.args.length !== requiredArgs.length){
 }</code></pre>
 					</section>
 					<section>
-						<h2>Step 1: Validate Arguments</h2>
+						<h2>Step 1: Validate Console Arguments</h2>
 					    <h4>(2 of 2)</h4>
 						<pre><code contenteditable>//put all of our script args into an object
 var settings = {};
@@ -624,12 +617,6 @@ webPage.paperSize = {
     },
 ...
 }</code></pre>
-					    <aside class="notes">
-							// the webpage.papersize property is where
-                            // you configure how the page should be printed
-                            //Every time a new page is rendered by PhantomJS
-                            //this will get invoked
-						</aside>
 					</section>
 					<section>
 						<h2>Step 3: Configure PDF Page Settings </h2>
@@ -680,7 +667,7 @@ webPage.zoomFactor = parseFloat(settings.zoomFactor);</code></pre>
 });</code></pre>
 					</section>
 					<section>
-						<h2>Biggest Selling Point</h2>
+						<h2>Why Is PhantomJS Great At PDFs?</h2>
 						<blockquote style="margin:100px auto 100px auto;">
 							Since PhantomJS is using WebKit, it can render HTML/CSS, SVG and Canvas to PDF the way users see it on your website.
 						</blockquote>
@@ -692,10 +679,94 @@ webPage.zoomFactor = parseFloat(settings.zoomFactor);</code></pre>
 					</section>
 					<section>
 						<h2>Demo Example #4<h2>
+					    <img src="assets/double-rainbow.jpeg"/>
+					</section>
+					<section>
+						<h2 style="color: #61B329;">Example #5</h2>
+						<h4 style="margin:50px 0 50px 0;">Take a screen shot of every matching CSS selector.</h4>
+						<pre><code contenteditable>$ phantomjs phantom-selector.js 'http://pinterest.com' '.pin'</code></pre>
+						<img style="vertical-align:top;" src="assets/pinterest2.png"/>
+						<img style="vertical-align:top;" src="assets/pinterest3.png"/>
+						<img style="vertical-align:top;" src="assets/pinterest4.png"/>
+					</section>
+					<section>
+						<h2>Design for phantom-selector.js</h2>
+						<ol style="margin-top:50px;">
+							<li>Parse console arguments</li>
+							<li>Request HTML</li>
+							<li>Gather element coordinates</li>
+							<li>Render screen shots</li>
+						</ol>
+					</section>
+					<section>
+						<h2>Step 1: Parse Console Arguments</h2>
+						<pre><code contenteditable>var system = require('system');
+var webPage = require('webpage').create();
+var scriptName = system.args[0];
+var url = system.args[1];
+var selector = system.args[2];</code></pre>
+					</section>
+					<section>
+						<h2>Step 2: Request HTML</h2>
+						<pre style="width:100%;"><code contenteditable>webPage.open( url, function(status){
+
+    // After the url has been successfully loaded
+    // we want to add jQuery to it so we can use it in
+    // the webPage.evaluate function
+    var jQueryUrl = "http://ajax.googleapis.com/.../jquery.min.js";
+    webPage.includeJs( jQueryUrl, function(){
+
+        //jQuery has now loaded and available to use
+
+    });
+});</code></pre>
+					</section>
+					<section>
+						<h2>Step 3: Gather Element Coordinates</h2>
+						<pre><code contenteditable>// Pass the css selector as the second argument
+// to the webPage.evaluate function
+elementData = webPage.evaluate(function (selector) {
+    var $nodes = $(selector);
+
+    // return the coordinates of the first 10 matching elements
+    return $nodes.map(function(){
+        var $node = $(this);
+        var coords = $node.offset();
+        coords.width = $node.outerWidth();
+        coords.height = $node.outerHeight();
+        return coords;
+    }).get().slice(0,10);
+
+}, selector);</code></pre>
+					</section>
+					<section>
+						<h2>Step 4: Render Screen Shots</h2>
+						<pre><code contenteditable>elementData.forEach(function(data, i){
+
+    // Create a unique filename for each screen shot
+    var file = "selection_" + i + ".png";
+
+    // Set the clipRect property of webPage
+    // This limits the area that is rendered
+    webPage.clipRect = {
+        top: data.top,
+        left: data.left,
+        width: data.width,
+        height: data.height
+    };
+
+    // Write the file to disk
+    webPage.render(file);
+});
+
+phantom.exit(0);</code></pre>
+					</section>
+					<section>
+						<h2>Demo Example #5</h2>
+						<img src="assets/double-rainbow.jpeg"/>
 					</section>
 				</section>
 				<section>
-
 					<section>
 						<h2>Adrian Adkison</h2>
 						<ul>

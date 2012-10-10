@@ -32,5 +32,4 @@ service = server.listen(8080, function (request, response) {
         response.write(JSON.stringify(imgData, null, 4));
         response.close();
     });
-
 });

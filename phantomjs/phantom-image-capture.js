@@ -1,1 +1,0 @@
-phantom-image-capture.js
