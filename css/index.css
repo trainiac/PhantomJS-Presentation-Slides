@@ -35,3 +35,39 @@ li{
     width: 100%;
 	margin:0 auto;
 }
+
+.html-file{
+	-webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+	color: #BA55D3;
+	height:300px;
+	width:200px;
+	border-radius: 4px;
+	background-color:#fff;
+	line-height: 300px;
+	margin:50px 100px 0 0;
+	float:left;
+}
+
+.browser{
+    margin:60px auto 0 auto;
+	width:500px;
+	background: #999;
+	padding:20px;
+	border:1px solid #ddd;
+	border-radius: 6px;
+}
+
+.browser-part{
+	background:#620A9E;
+    border: 1px solid #620A9E;
+    border-radius: 4px;
+    font-size:0.8em;
+}
+
+.browser-part li{
+    margin:0 0 10px 0;
+}
+
+.webkit.browser-part{
+     padding:10px;
+}

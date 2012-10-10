@@ -52,13 +52,28 @@
 						<img src="assets/confused.jpeg" width="500px"/>
 					</section>
 					<section>
-						<h2>Chrome or Safari</h2>
-						<h5>Webkit with a head</h5>
-						<ul>
-							<li>Makes HTML requests</li>
-							<li>Parses HTML into a DOM structure</li>
-							<li>Creates a visual representation of the DOM <br/>(The Head)</li>
-						</ul>
+						<h2>Webkit with a head</h2>
+						<h5>e.g. Chrome or Safari</h5>
+						<div class="browser">
+							<h5> Browser (Head)</h5>
+							<ul style="margin:20px 0 20px 20px;">
+								<li>
+								    Interprets layout information
+							    </li>
+							    <li>
+							    	Creates display (UI)
+							    </li>
+							</ul>
+							<div class="webkit browser-part">
+								<h5>Webkit</h5>
+								<ul>
+									<li>Handles Network Requests</li>
+									<li>Parses HTML / CSS</li>
+									<li>Executes Javscript</li>
+									<li>Creates layout information</li>
+								</ul>
+							</div>
+						</div>
 					</section>
 					<section>
 						<h2>Who needs a head?</h2>
@@ -78,12 +93,18 @@
 					</section>
 					<section>
 						<h2>Enter PhantomJS</h2>
-						<h5>Webkit without a head</h5>
-						<ul>
-							<li>Makes HTML requests</li>
-							<li>Parses HTML into a DOM structure</li>
-							<li>You start scripting the DOM</li>
-						</ul>
+						<div class="browser" class="browser">
+							<h5> PhantomJS</h5>
+							<div class="webkit browser-part">
+								<h5>Webkit</h5>
+								<ul>
+									<li>Handles Network Requests</li>
+									<li>Parses HTML / CSS</li>
+									<li>Executes Javscript</li>
+									<li>Creates layout information</li>
+								</ul>
+							</div>
+						</div>
 					</section>
 					<section>
 						<h2>In One Sentence</h2>
@@ -535,6 +556,24 @@ var complete = webPage.evaluate(function () {
 					<section>
 						<h2>Tests Are Oblivious To PhantomJS</h2>
 						<img src="assets/peepingtom.jpeg"/>
+					</section>
+					<section>
+						<h2>Tempting but try not to do it</h2>
+						<h4 style="margin-top:50px;">HTML file</h4>
+						<pre><code contenteditable>console.log("PhantomJS: hey");
+&lt;div id="specialPhantomJSID"&gt;&lt;/div&gt;
+</code></pre>
+<h4 style="margin-top:50px;">PhantomJS script</h4>
+<pre><code contenteditable>webPage.onConsoleMessage = function(msg){
+    if( startsWith(msg, "PhantomJS") ){
+        //do something special
+    }
+}
+
+webPage.evaluate(function(){
+    document.getElementById('specialPhantomJSID');
+})</code></pre>
+<h4 style="margin-top:50px;"> Introduces more dependencies </h4>
 					</section>
 					<section>
 						<h2>Step 5: Output Results</h2>
