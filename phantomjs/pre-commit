@@ -1,0 +1,32 @@
+#!/usr/bin/env python
+
+# this file needs to be added to your git repository like this .git/hooks/pre-commit
+
+import os
+import subprocess
+import sys
+
+def main():
+    # Stash any changes to the working tree that are not going to be committed
+    print 'Running QUnit tests'
+    root =  os.path.split(os.path.abspath(os.path.dirname(__file__)))[0]
+    root = root[:-4]
+
+    # need to add your own tests directory here
+    tests = root + "smtemplates/tests/"
+
+    # need to add your own phantom js script here
+    script  = tests + 'phantom-qunit.js'
+
+    # need to add your own qunit test file path or url here
+    test_page  = 'http://www.localhost.com/analyze/design-pattern-tests/'
+
+    result = subprocess.call(['phantomjs', script, test_page])
+    if result != 0:
+        print "commit failed due to", test_page, "failed js tests"
+        sys.exit(result)
+    else:
+        sys.exit(0)
+
+if __name__ == '__main__':
+    main()
